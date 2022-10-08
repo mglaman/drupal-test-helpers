@@ -1,0 +1,42 @@
+{
+    "name": "mglaman/drupal-test-helpers",
+    "description": "Helpers for writing better Kernel and Unit tests for Drupal",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Matt Glaman",
+            "email": "nmd.matt@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "drupal/core": "^9 || ^10",
+        "phpstan/phpstan-phpunit": "^1.1"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.28",
+        "mikey179/vfsstream": "^1.6",
+        "phpspec/prophecy-phpunit": "^2",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan": "^1.8",
+        "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": "^3.7",
+        "symfony/phpunit-bridge": "^6.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "mglaman\\DrupalTestHelpers\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "mglaman\\DrupalTestHelpers\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "phpstan/extension-installer": true
+        }
+    }
+}

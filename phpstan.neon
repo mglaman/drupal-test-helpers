@@ -1,0 +1,9 @@
+parameters:
+	level: 9
+	paths:
+		- src
+		- tests
+	bootstrapFiles:
+		- tests/bootstrap.php
+includes:
+	- vendor/phpstan/phpstan/conf/bleedingEdge.neon
