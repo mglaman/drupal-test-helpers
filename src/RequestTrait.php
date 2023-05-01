@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace mglaman\DrupalTestHelpers;
 
 use Drupal\KernelTests\AssertContentTrait;
-use PHPUnit\Framework\TestCase;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
