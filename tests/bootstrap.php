@@ -17,6 +17,7 @@ $loader->add('Drupal\\FunctionalJavascriptTests', __DIR__ . '/../vendor/drupal/c
 $loader->add('Drupal\\TestTools', __DIR__ . '/../vendor/drupal/core/tests');
 $loader->addPsr4('Drupal\\sqlite\\', __DIR__ . '/../vendor/drupal/core/modules/sqlite/src');
 $loader->addPsr4('Drupal\\Tests\\user\\', __DIR__ . '/../vendor/drupal/core/modules/user/tests/src');
+$loader->addPsr4('Drupal\\user\\', __DIR__ . '/../vendor/drupal/core/modules/user/src');
 
 if (class_exists(ClassWriter::class)) {
     ClassWriter::mutateTestBase($loader);
