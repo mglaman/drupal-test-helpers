@@ -34,11 +34,6 @@ trait RequestTrait
      */
     protected function doRequest(Request $request, bool $terminate = false): Response
     {
-        assert($this instanceof TestCase);
-        self::assertInstanceOf(
-            ContainerInterface::class,
-            $this->container
-        );
         $http_kernel = $this->container->get('http_kernel');
         self::assertInstanceOf(
             HttpKernelInterface::class,
