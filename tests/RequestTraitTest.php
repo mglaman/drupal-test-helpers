@@ -7,6 +7,7 @@ namespace mglaman\DrupalTestHelpers\Tests;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Url;
 use Drupal\KernelTests\KernelTestBase;
+use Drupal\Tests\user\Traits\UserCreationTrait;
 use Drupal\user\Entity\User;
 use mglaman\DrupalTestHelpers\RequestTrait;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 final class RequestTraitTest extends KernelTestBase
 {
     use RequestTrait;
+    use UserCreationTrait;
 
     /**
      * @var string[]

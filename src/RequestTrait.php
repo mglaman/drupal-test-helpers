@@ -88,9 +88,11 @@ trait RequestTrait
     private function getInputValue(string $name): string
     {
         $input = $this->cssSelect(sprintf('input[name="%s"]', $name));
-        if (count($input) === 0) {
-            return '';
-        }
+        self::assertNotCount(
+            0,
+            $input,
+            sprintf('Expected to find at least one element with selector [input[name="%s"]]', $name)
+        );
         return (string) $input[0]->attributes()?->value[0];
     }
 }
