@@ -1,6 +1,7 @@
 {
     "name": "mglaman/drupal-test-helpers",
     "description": "Helpers for writing better Kernel and Unit tests for Drupal",
+    "license": "MIT",
     "type": "library",
     "authors": [
         {
