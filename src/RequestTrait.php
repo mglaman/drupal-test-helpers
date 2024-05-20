@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace mglaman\DrupalTestHelpers;
 
+use Drupal\Core\Form\EnforcedResponseException;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\KernelTests\AssertContentTrait;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,10 +44,18 @@ trait RequestTrait
             $formData['form_token'] = $this->getInputValue('form_token');
         }
 
-        $response = $this->doRequest(Request::create($uri, 'POST', $formData));
-        if ($followRedirect && $response->getStatusCode() === Response::HTTP_SEE_OTHER) {
-            $request = Request::create((string) $response->headers->get('Location'));
-            return $this->doRequest($request);
+        try {
+            $response = $this->doRequest(Request::create($uri, 'POST', $formData));
+            if ($followRedirect && $response->getStatusCode() === Response::HTTP_SEE_OTHER) {
+                $request = Request::create((string) $response->headers->get('Location'));
+                return $this->doRequest($request);
+            }
+        } catch (EnforcedResponseException $e) {
+            if ($followRedirect) {
+                $request = Request::create((string) $e->getResponse()->headers->get('Location'));
+                return $this->doRequest($request);
+            }
+            throw $e;
         }
         return $response;
     }
