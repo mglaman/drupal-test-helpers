@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace mglaman\DrupalTestHelpers;
 
+use Drupal\Core\Form\EnforcedResponseException;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\KernelTests\AssertContentTrait;
 use Symfony\Component\HttpFoundation\Request;
