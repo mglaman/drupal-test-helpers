@@ -27,7 +27,7 @@ final class RequestTraitTest extends KernelTestBase
         $this->installConfig(['system']);
         $this->doRequest(Request::create('/user/login'));
         self::assertStringContainsString(
-            'Enter your  username.',
+            'Username',
             $this->getRawContent()
         );
         $cache = $this->container->get('cache.bootstrap');
@@ -43,7 +43,7 @@ final class RequestTraitTest extends KernelTestBase
         $this->installConfig(['system']);
         $this->doRequest(Request::create('/user/login'), true);
         self::assertStringContainsString(
-            'Enter your  username.',
+            'Username',
             $this->getRawContent()
         );
         $cache = $this->container->get('cache.bootstrap');
