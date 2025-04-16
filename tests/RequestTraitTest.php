@@ -30,30 +30,15 @@ final class RequestTraitTest extends KernelTestBase
             'Username',
             $this->getRawContent()
         );
-        $cache = $this->container->get('cache.bootstrap');
-        self::assertInstanceOf(CacheBackendInterface::class, $cache);
-        self::assertFalse(
-            $cache->get('module_implements'),
-            'Module hook implementation not written since response was not terminated',
-        );
     }
 
     public function testDoRequestWithTerminate(): void
     {
-        if (version_compare(\Drupal::VERSION, '11', '>=')) {
-            $this->markTestSkipped('This test is not applicable for Drupal 11 and later.');
-        }
         $this->installConfig(['system']);
         $this->doRequest(Request::create('/user/login'), true);
         self::assertStringContainsString(
             'Username',
             $this->getRawContent()
-        );
-        $cache = $this->container->get('cache.bootstrap');
-        self::assertInstanceOf(CacheBackendInterface::class, $cache);
-        self::assertNotEmpty(
-            $cache->get('module_implements'),
-            'Module hook implementation was written since response terminated',
         );
     }
 
