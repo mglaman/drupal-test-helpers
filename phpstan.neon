@@ -5,5 +5,7 @@ parameters:
 		- tests
 	bootstrapFiles:
 		- tests/bootstrap.php
+	dynamicConstantNames:
+		- Drupal::VERSION
 includes:
 	- vendor/phpstan/phpstan/conf/bleedingEdge.neon
