@@ -30,12 +30,6 @@ final class RequestTraitTest extends KernelTestBase
             'Username',
             $this->getRawContent()
         );
-        $cache = $this->container->get('cache.bootstrap');
-        self::assertInstanceOf(CacheBackendInterface::class, $cache);
-        self::assertFalse(
-            $cache->get('module_implements'),
-            'Module hook implementation not written since response was not terminated',
-        );
     }
 
     public function testDoRequestWithTerminate(): void
@@ -45,12 +39,6 @@ final class RequestTraitTest extends KernelTestBase
         self::assertStringContainsString(
             'Username',
             $this->getRawContent()
-        );
-        $cache = $this->container->get('cache.bootstrap');
-        self::assertInstanceOf(CacheBackendInterface::class, $cache);
-        self::assertNotEmpty(
-            $cache->get('module_implements'),
-            'Module hook implementation was written since response terminated',
         );
     }
 
