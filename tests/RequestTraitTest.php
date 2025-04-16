@@ -40,6 +40,9 @@ final class RequestTraitTest extends KernelTestBase
 
     public function testDoRequestWithTerminate(): void
     {
+        if (version_compare(\Drupal::VERSION, '11', '>=')) {
+            $this->markTestSkipped('This test is not applicable for Drupal 11 and later.');
+        }
         $this->installConfig(['system']);
         $this->doRequest(Request::create('/user/login'), true);
         self::assertStringContainsString(
